@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+menu "Flash App Drivers"
+	depends on AW_BSP
+
+config AW_FLASHAPP
+	tristate "Flash app Support for Allwinner SoCs"
+	depends on (AW_MTD || AW_MMC) && AW_BSP
+	default n
+	help
+	  flash applications integrate storage differences and unify interfaces.
+
+source "$(BSP_TOP)drivers/misc/flash_app/isp_param/Kconfig"
+source "$(BSP_TOP)drivers/misc/flash_app/isp_iq_file/Kconfig"
+
+endmenu
+

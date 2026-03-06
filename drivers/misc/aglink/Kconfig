@@ -1,0 +1,105 @@
+# SPDX-License-Identifier: GPL-2.0-only
+config AG_LINK
+	tristate "ai glass link protocol"
+	default n
+	help
+	  To compile this code as a module, choose M here.
+
+if AG_LINK
+
+config AGLINK_DEV_NUM
+    int "Number of AGLINK devices"
+    default 1
+    range 1 3
+    help
+      Select the number of AGLINK devices. The default is 1, but
+      you can change it to a value between 1 and 3.
+
+config AG_LOOPBACK
+	tristate "Support loopback device"
+	depends on AG_LINK && MMC
+	help
+	  Enables support for the AGLINK connected via a loopback bus.  You will
+	  need to add appropriate platform data glue in your board setup
+	  file.
+
+config AG_UART
+	tristate "Support UART device"
+	depends on AG_LINK && MMC
+	help
+	  Enables support for the AGLINK connected via a uart bus.  You will
+	  need to add appropriate platform data glue in your board setup
+	  file.
+
+config AG_UART_KERNEL
+	tristate "Support UART kernel device"
+	depends on AG_LINK
+	help
+	  Enables support for the AGLINK connected via a uart(kernel) bus.  You will
+	  need to add appropriate platform data glue in your board setup
+	  file.
+
+config AG_SAVE_THUMBNAIL
+	tristate "Support save thumbnail"
+	depends on AG_LINK && MMC
+	help
+	  Enables support for the AGLINK save thumbnail.  You will
+	  need to add appropriate platform data glue in your board setup
+	  file.
+
+config AG_MODE_RTC_IDX
+	int "ai glass mode stored at RTC X"
+	depends on AG_LINK
+	default 1
+
+config AG_MODE_RTC_OFS
+	int "ai glass mode RTC offset"
+	depends on AG_LINK
+	default 0
+
+config AG_MODE_RTC_WIDTH
+	int "ai glass mode RTC width"
+	depends on AG_LINK
+	default 4
+
+config AG_UART_KERNEL_PORT
+	string "kernel uart port "
+	depends on AG_UART_KERNEL
+	default "ttyS2"
+	help
+	  Configure the uart port used by the kernel(default:ttyS2).
+
+config AG_UART_KERNEL_RATE
+	int "kernel uart rate"
+	depends on AG_UART_KERNEL
+	default 150000
+	help
+	  Configure the uart rate used by the kernel(default:150000).
+
+config AG_LED_CTRL
+	tristate "via aglink ctrl led"
+	depends on AG_LINK
+	help
+	  via aglink ctrl led.
+
+config AG_AOV_CTRL
+	tristate "via aglink ctrl aov"
+	depends on AG_LINK
+	help
+	  via aglink ctrl aov.
+
+config AG_USE_VAMLLOC_SAVE_PHOTO
+	bool "take photo use vmalloc"
+	depends on AG_LINK
+	default n
+	help
+	  take photo use vmalloc.
+
+config AG_USE_CHECKSUM
+	bool "aglink do crc16 check"
+	depends on AG_LINK
+	default n
+	help
+	  aglink do crc16 check
+
+endif

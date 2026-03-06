@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-2.0-only
+config SPIF_SUNXI
+	tristate "SUNXI SPIF Controller"
+	depends on AW_BSP && OF
+	help
+	  Allwinner SOC SPIF controller, present on SUNXI chips.
+
+config AW_SPIF_DELAYINIT
+	bool "SUNXI SPIF Controller Delay Init"
+	depends on SPIF_SUNXI && AW_RPMSG_NOTIFY
+	default n
+	help
+	  If you need to use spif in the heterogeneous core first and then
+	  notify spif in linux to obtain hardware resources, you can say yes
+	  to this option, spif hardware resource init will be delayed.
+
+config AW_SPIF_DELAYINIT_RPROC_NAME
+	string "SUNXI SPIF Controller Delay Init Rproc Name"
+	depends on AW_SPIF_DELAYINIT
+	default "43030000.e907_rproc"

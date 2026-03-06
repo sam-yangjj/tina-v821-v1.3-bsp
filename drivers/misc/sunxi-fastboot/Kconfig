@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: GPL-2.0
+#
+# Allwinner fastboot services
+#
+
+menu "Fastboot Services"
+	depends on AW_BSP
+
+config AW_FASTBOOT_PANIC_DUMPER
+  tristate "Fastboot panic dumper for dump kmsg when panic"
+  depends on PRINTK
+  help
+    Allwinner fastboot panic dumper for dump kmsg when panic
+
+endmenu

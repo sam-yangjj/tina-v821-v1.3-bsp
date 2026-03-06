@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-2.0-only
+menu "Touch Boost Drivers"
+	depends on AW_BSP
+
+config AW_TOUCH_BOOST
+       tristate "Allwinner touch boost Support"
+       depends on AW_BSP && CPU_FREQ
+       default n
+       help
+	 Support touch boost driver.If you need boost cpufreq when you
+	 touch the touchscreen,say Yes to support this feature.
+
+endmenu

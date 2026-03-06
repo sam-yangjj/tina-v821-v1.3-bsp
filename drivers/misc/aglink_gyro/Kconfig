@@ -1,0 +1,21 @@
+config AG_GYRO_USE
+	tristate "via aglink gyros driver"
+	depends on AG_LINK
+	default 0
+	help
+	  via aglink gyros driver.
+	choice
+	    prompt "Gyro Sensor Choise"
+		depends on AG_GYRO_USE
+	    default GYRO_ICM42607
+
+	config GYRO_ICM42607
+	    bool "Sensor: ICM-42607"
+
+	config GYRO_LSM6DSOX
+	    bool "Sensor: LSM6DSOX"
+
+	config GYRO_SC7U22
+	    bool "Sensor: SC7U22"
+
+	endchoice

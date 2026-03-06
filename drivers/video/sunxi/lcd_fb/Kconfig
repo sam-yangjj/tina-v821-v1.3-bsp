@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# SPI LCD Video configuration for sunxi platform
+#
+
+menu "SPI LCD Panel Drivers"
+	depends on FB
+	depends on AW_BSP
+
+config LCD_FB
+	tristate "LCD FB Driver Support (SPI LCD)"
+	depends on (AW_SPI_NG || AW_SPI)
+	select FB_CFB_FILLRECT
+	select FB_CFB_COPYAREA
+	select FB_CFB_IMAGEBLIT
+	select FB_SYS_FOPS
+	select BACKLIGHT_CLASS_DEVICE
+	default n
+	help
+	  Framebuffer implementaion for LCD panel without DE and tcon
+
+config AW_LCD_FB_USE_ION
+	bool "LCD_FB use ION for framebuffer (Linux <= 5.4)"
+	depends on LCD_FB
+	depends on ION
+	default n
+	help
+	  Enable linux framebuffer use ION (Linux <= 5.4) for LCD_FB
+
+config AW_LCD_FB_USE_DMABUF
+	bool "LCD_FB use DMABUF for framebuffer (Linux > 5.4)"
+	depends on LCD_FB
+	depends on DMABUF_HEAPS
+	default n
+	help
+	  Enable linux framebuffer use DMABUF (Linux > 5.4) for LCD_FB
+
+config LCD_FB_ENABLE_DEFERRED_IO
+	bool "Enable LCD_FB FB_DEFERRED_IO"
+	depends on LCD_FB
+	depends on (!AW_LCD_FB_USE_ION && !AW_LCD_FB_USE_DMABUF)
+	select FB_DEFERRED_IO
+	default n
+	help
+	  Enable linux framebuffer FB_DEFERRED_IO for LCD_FB
+
+config AW_LCD_FB_DECOMPRESS_LZMA
+	bool "LCD_FB bootlogo with decompress LZMA logo"
+	depends on LCD_FB
+	select DECOMPRESS_LZMA
+	default n
+	help
+	  Enable LCD_FB bootlogo with decompressed LZMA logo.
+	  This option enables the LCD framebuffer (LCD_FB) to display the boot logo with an LZMA compressed image.
+	  It requires the LCD_FB configuration option and also selects the DECOMPRESS_LZMA feature for handling LZMA compression.
+	  When enabled, the kernel will decompress the boot logo from LZMA format before rendering it on the LCD screen.
+	  This is useful for saving space in boot images, especially when working with systems where storage space is limited.
+	  If unsure, it is safe to leave this option disabled.
+
+menu "LCD FB Panels select"
+	depends on LCD_FB
+source "$(BSP_TOP)drivers/video/sunxi/lcd_fb/panels/Kconfig"
+endmenu
+
+endmenu
+

@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
+	config SENSOR_STK83XX
+	tristate "sensortek stk83xx accelerator driver"
+	depends on I2C
+	default n
+	help
+		If you say yes here, you get support for the stk83xx.

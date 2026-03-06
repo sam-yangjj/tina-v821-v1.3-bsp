@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# Allwinner audio PA driver Makefile
+#
+# Copyright(c) 2022-2027 Allwinnertech Co., Ltd.
+
+ccflags-y += -include $(srctree)/bsp/drivers/sound/pa/snd_sunxi_pa.h
+
+#for AWINIC AW87XXX Smart K PA
+snd_soc_aw87x_pa-objs := aw87xxx/aw87xxx.o \
+		aw87xxx/aw87xxx_device.o \
+		aw87xxx/aw87xxx_monitor.o \
+		aw87xxx/aw87xxx_bin_parse.o \
+		aw87xxx/aw87xxx_dsp.o \
+		aw87xxx/aw87xxx_acf_bin.o
+
+obj-$(CONFIG_SND_SOC_AW87XXX) = snd_soc_aw87x_pa.o

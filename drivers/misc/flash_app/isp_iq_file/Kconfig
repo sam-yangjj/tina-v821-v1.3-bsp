@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: GPL-2.0
+#
+# Allwinner isp-param driver.
+#
+
+config AW_ISP_PARAM_IQ_FILE
+  tristate "Allwinner isp-param iq file driver"
+  depends on AW_FLASHAPP
+  depends on VIN_INIT_MELIS
+  help
+    Allwinner isp-param iq file driver for IQ file write to flash, only for IQ Tunning
+

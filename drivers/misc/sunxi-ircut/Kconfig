@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0
+#
+# Allwinner ir-cut driver.
+#
+
+config AW_IRCUT
+  tristate "Allwinner ir-cut driver"
+  depends on AW_PINCTRL
+  help
+    Allwinner ir-cut driver support for sun300iw1
+

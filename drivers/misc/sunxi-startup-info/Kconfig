@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0
+#
+# Allwinner startup-info driver.
+#
+
+config AW_STARTUP_INFO
+  tristate "Allwinner startup-info driver"
+  depends on ARCH_SUN300IW1
+  help
+    Allwinner startup-info driver support for sun300iw1
+

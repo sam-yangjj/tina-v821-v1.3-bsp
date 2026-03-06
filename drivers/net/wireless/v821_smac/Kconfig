@@ -1,0 +1,73 @@
+config V821_SMAC_WLAN
+	tristate "v821 linux mac WLAN support"
+	default n
+	select CFG80211
+	select AVERAGE
+	select CRYPTO
+	select CRYPTO_ARC4
+	help
+	  To compile this code as a module, choose M here.
+
+
+if V821_SMAC_WLAN
+
+choice XRADIO_CHIP_V821_SMAC
+	prompt "Xradio chip"
+        help
+		Specify the xradio chip.
+
+config USE_V821_SIP_WIFI_T
+	bool "enable v821 sip wifi"
+	help
+		if use v821 sip wifi, please select this.
+
+config XR819_OR_XR819S_WLAN_T
+	bool "enable xr819/xr819s wlan"
+	help
+		if don't use v821 sip wifi, please select this.
+
+endchoice
+endif
+
+config XRADIO_DEBUG
+	bool "enable xradio debug"
+	depends on V821_SMAC_WLAN
+	default y
+	help
+	    enable xradio debug
+
+config XRADIO_DEBUG_MIN
+	bool "enable xradio debug min"
+	depends on V821_SMAC_WLAN
+	default n
+	help
+	    enable xradio debug min
+
+config XRADIO_ETF
+	bool "enable xradio etf"
+	depends on V821_SMAC_WLAN
+	default y
+	help
+	    enable xradio etf
+
+config XRADIO_DEBUGFS
+	bool "enable xradio debugfs"
+	depends on V821_SMAC_WLAN
+	default y
+	help
+	    enable xradio debugfs
+
+config XRADIO_DBG_FW_INF
+	bool "enable xradio dbg fw inf"
+	depends on V821_SMAC_WLAN
+	default y
+	help
+	    enable xradio debug fw inf
+
+config FW_TXRXBUF_USE_COEXIST_RAM
+	bool "enable txrx buf use co-exist ram"
+	depends on V821_SMAC_WLAN
+	depends on CHIP_V821B
+	default y
+	help
+	    enable xradio txrx buf use co-exist ram

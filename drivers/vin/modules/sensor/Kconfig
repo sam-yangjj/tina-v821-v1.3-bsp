@@ -1,0 +1,574 @@
+# SPDX-License-Identifier: GPL-2.0-only
+menu "sensor driver select"
+	depends on AW_VIDEO_SUNXI_VIN
+
+config SENSOR_BF3238CS_MIPI
+	tristate "use bf3238cs driver"
+	default n
+
+config SENSOR_AR0238
+	tristate "use ar0238 driver"
+	default n
+
+config SENSOR_AR0238_HISPI
+	tristate "use ar0238_hispi driver"
+	default n
+
+config SENSOR_BF30A2
+	tristate "use bf30a2 driver"
+	default n
+
+config SENSOR_C2390A
+	tristate "use c2390a driver"
+	default n
+
+config SENSOR_C2398
+	tristate "use c2398 driver"
+	default n
+
+config SENSOR_C2399
+	tristate "use c2399 driver"
+	default n
+
+config SENSOR_C2590
+	tristate "use c2590 driver"
+	default n
+
+config SENSOR_F37P
+	tristate "use f37p driver"
+	default n
+
+config SENSOR_F37P_ONE_LANE_MIPI
+	bool "use f37p_mipi one lane"
+	depends on SENSOR_F37P
+	default n
+
+config SENSOR_F37P_DVP
+	tristate "use f37p dvp driver"
+	default n
+
+config SENSOR_F355P_MIPI
+	tristate "use f355p driver"
+	default n
+
+config SENSOR_F355P_DVP
+	tristate "use f355p dvp driver"
+	default n
+
+config SENSOR_F38P
+	tristate "use f38p driver"
+	default n
+
+config SENSOR_F58
+	tristate "use f58 driver"
+	default n
+
+config SENSOR_GC02M1
+	tristate "use gc02m1 driver"
+	default n
+
+config SENSOR_GC02M1B
+	tristate "use gc02m1b driver"
+	default n
+
+config SENSOR_GC02M2
+	tristate "use gc02m2 driver"
+	default n
+
+config SENSOR_GC030A
+	tristate "use gc030a driver"
+	default n
+
+config SENSOR_GC0310
+	tristate "use gc0310 driver"
+	default n
+
+config SENSOR_GC05A2
+	tristate "use gc05a2 driver"
+	default n
+
+config SENSOR_GC08A3
+	tristate "use gc08a3 driver"
+	default n
+
+config SENSOR_GC1084_MIPI
+	tristate "use gc1084_mipi driver"
+	default n
+
+config SENSOR_GC1084_8BIT_MIPI
+	bool "use gc1084_mipi 8bit"
+	depends on SENSOR_GC1084_MIPI
+	default n
+
+config SENSOR_GC1084_MIPI_USE_SAME_TWI
+	bool "use gc1084_mipi use same twi and work together"
+	depends on SENSOR_GC1084_MIPI
+	default n
+
+config SENSOR_GC2083_MIPI
+	tristate "use gc2083_mipi driver"
+	default n
+
+config SENSOR_GC2083_ONE_LANE_MIPI
+	bool "use gc2083_mipi one lane"
+	depends on SENSOR_GC2083_MIPI
+	default n
+
+config SENSOR_GC2083_VSYNC_MODE
+	bool "use gc2083_mipi usr master-slave mode"
+	depends on SENSOR_GC2083_MIPI
+	default n
+
+config SENSOR_GC2083_VSYNC_VBLANK_MODE
+	bool "use gc2083_mipi usr master-slave vblanK mode"
+	depends on SENSOR_GC2083_VSYNC_MODE
+	default n
+
+config SENSOR_GC2083_VSYNC_VBLANK35
+	bool "use gc2083_mipi usr master-slave 15fps vblanK35 mode"
+	depends on SENSOR_GC2083_VSYNC_VBLANK_MODE
+	depends on SENSOR_GC2083_VSYNC_MODE
+	default n
+
+config SENSOR_GC2083_VSYNC_VBLANK40
+	bool "use gc2083_mipi usr master-slave 15fps vblanK40 mode"
+	depends on SENSOR_GC2083_VSYNC_VBLANK_MODE
+	depends on SENSOR_GC2083_VSYNC_MODE
+	default n
+
+config SENSOR_GC2083_SM_VSYNC_MODE
+	bool "use gc2083_mipi usr sm vsync master-slave mode"
+	depends on SENSOR_GC2083_ONE_LANE_MIPI
+	depends on TDM_ONE_BUFFER_WITH_TWORX
+	default n
+
+config SENSOR_GC2083_MIPI_USE_SAME_TWI
+	bool "use GC2083_mipi use same twi and work together"
+	depends on SENSOR_GC2083_MIPI
+	default n
+
+config SENSOR_NUM
+    int  "GC2083 SENSOR_NUM"
+	depends on SENSOR_GC2083_MIPI
+	depends on SENSOR_GC2083_MIPI_USE_SAME_TWI
+	range 1 3
+	default 3
+
+config SENSOR_GC2145
+	tristate "use gc2145 driver"
+	default n
+
+config SENSOR_GC4663_MIPI
+	tristate "use gc4663 driver"
+	default n
+
+config SENSOR_GC05A2_MIPI
+	tristate "use gc05a2 driver"
+	default n
+
+config SENSOR_GC2355
+	tristate "use gc2355 driver"
+	default n
+
+config SENSOR_GC2385
+	tristate "use gc2385 driver"
+	default n
+
+config SENSOR_GC2590
+	tristate "use gc2590 driver"
+	default n
+
+config SENSOR_GC5024
+	tristate "use gc5024 driver"
+	default n
+
+config SENSOR_GC5025
+	tristate "use gc5025 driver"
+	default n
+
+config SENSOR_GC5035
+	tristate "use gc5035 driver"
+	default n
+
+config SENSOR_GC6133
+	tristate "use gc6133 driver"
+	default n
+
+config SENSOR_GC6153
+	tristate "use gc6153 driver"
+	default n
+
+config SENSOR_IMX214
+	tristate "use imx214 driver"
+	default n
+
+config SENSOR_IMX219
+	tristate "use imx219 driver"
+	default n
+
+config SENSOR_IMX219_TWO_LANE_MIPI
+	bool "use imx219_mipi two lane"
+	depends on SENSOR_IMX219
+	default n
+
+config SENSOR_IMX258
+	tristate "use imx258 driver"
+	default n
+
+config SENSOR_IMX274_SLVDS
+	tristate "use imx274_slvds driver"
+	default n
+
+config SENSOR_IMX278_2LANE
+	tristate "use imx278_2lane driver"
+	default n
+
+config SENSOR_IMX278
+	tristate "use imx278 driver"
+	default n
+
+config SENSOR_IMX291_DVP
+	tristate "use imx291_dvp driver"
+	default n
+
+config SENSOR_IMX291
+	tristate "use imx291 driver"
+	default n
+
+config SENSOR_IMX317
+	tristate "use imx317 driver"
+	default n
+
+config SENSOR_IMX319
+	tristate "use imx319 driver"
+	default n
+
+config SENSOR_IMX326
+	tristate "use imx326 driver"
+	default n
+
+config SENSOR_IMX335
+	tristate "use imx335 driver"
+	default n
+
+config SENSOR_IMX386_2LANE
+	tristate "use imx386_2lane driver"
+	default n
+
+config SENSOR_IMX386
+	tristate "use imx386 driver"
+	default n
+
+config SENSOR_IMX477
+	tristate "use imx477 driver"
+	default n
+
+config SENSOR_LT6911C
+	tristate "use lt6911c driver"
+	default n
+
+config SENSOR_LT7911D
+	tristate "use lt7911d driver"
+	default n
+
+config SENSOR_NVP6134
+	tristate "use nvp6134 driver"
+	default n
+
+config SENSOR_NVP6158C
+	tristate "use nvp6158c driver"
+	default n
+
+choice
+	depends on SENSOR_NVP6158C
+	prompt "select nvp6158c mode"
+	default BT1120
+
+config BT1120
+	bool "sensor usr bt1120 fmt"
+
+config BT656
+	bool "sensor usr bt656 fmt"
+endchoice
+
+config SENSOR_NVP6324
+	tristate "use nvp6324 driver"
+	default n
+
+config SENSOR_OV02A10
+	tristate "use ov02a10 driver"
+	default n
+
+config SENSOR_OV13850
+	tristate "use ov13850 driver"
+	default n
+
+config SENSOR_OV13B10
+	tristate "use ov13b10 driver"
+	default n
+
+config SENSOR_OV02B10_MIPI
+	tristate "use ov02b10 driver"
+	default n
+
+config SENSOR_OV2680
+	tristate "use ov2680 driver"
+	default n
+
+config SENSOR_OV2710
+	tristate "use ov2710 driver"
+	default n
+
+config SENSOR_OV2718
+	tristate "use ov2718 driver"
+	default n
+
+config SENSOR_OV2775
+	tristate "use ov2775 driver"
+	default n
+
+config SENSOR_OV5640
+	tristate "use ov5640 driver"
+	default n
+
+config SENSOR_OV5648_MIPI
+    tristate "use ov5648_mipi driver"
+    default n
+
+config SENSOR_OV5675
+	tristate "use ov5675 driver"
+	default n
+
+config SENSOR_OV5695
+	tristate "use ov5695 driver"
+	default n
+
+config SENSOR_OV8856
+	tristate "use ov8856 driver"
+	default n
+
+config SENSOR_OV8858_R2A_4LANE
+	tristate "use ov8858_r2a_4lane driver"
+	default n
+
+config SENSOR_OV8865
+	tristate "use ov8865 driver"
+	default n
+
+config SENSOR_OV7251
+	tristate "use ov7251 driver"
+	default n
+
+config SENSOR_OS02G10_MIPI
+	tristate "use os02g10 mipi driver"
+	default n
+
+config SENSOR_OS02G10_DVP
+	tristate "use os02g10 dvp driver"
+	default n
+
+config SENSOR_PTN
+	tristate "use ptn driver"
+	default n
+
+config SENSOR_RN6854M
+	tristate "use rn6854m driver"
+	default n
+
+config SENSOR_RN6752V1
+	tristate "use rn6752v1 driver"
+	default n
+
+config SENSOR_S5K3H5XA
+	tristate "use s5k3h5xa driver"
+	default n
+
+config SENSOR_S5K3L2
+	tristate "use s5k3l2 driver"
+	default n
+
+config SENSOR_S5K3P8
+	tristate "use s5k3p8 driver"
+	default n
+
+config SENSOR_S5K5E8
+	tristate "use s5k5e8 driver"
+	default n
+
+config SENSOR_SC035HGS
+	tristate "use sc035hgs driver"
+	default n
+
+config SENSOR_SC2232
+	tristate "use sc2232 driver"
+	default n
+
+config SENSOR_SC2336_MIPI
+	tristate "use sc2336_mipi driver"
+	default n
+
+config SENSOR_SC2336_ONE_LANE_MIPI
+	tristate "use sc2336_mipi one lane"
+	depends on SENSOR_SC2336_MIPI
+	default n
+
+config SENSOR_SC2336_SM_VSYNC_MODE
+	tristate "use sc2336_mipi usr sm vsync master-slave mode"
+	depends on SENSOR_SC2336_ONE_LANE_MIPI
+	depends on TDM_ONE_BUFFER_WITH_TWORX
+	default n
+
+config SENSOR_SC2336P_MIPI
+	tristate "use sc2336p_mipi driver"
+	default n
+
+config SENSOR_SC2331_MIPI
+	tristate "use sc2331_mipi driver"
+	default n
+
+config SENSOR_SC2331_ONE_LANE_MIPI
+	bool "use sc2331_mipi one lane"
+	depends on SENSOR_SC2331_MIPI
+	default n
+
+config SENSOR_SC2331_SM_VSYNC_MODE
+	bool "use sc2331_mipi usr sm vsync master-slave mode"
+	depends on SENSOR_SC2331_MIPI
+	depends on SENSOR_SC2331_ONE_LANE_MIPI
+	default n
+
+config SENSOR_SC2331_MASTER_SET_OUTPUT
+	bool "use sc2331_mipi master set output mode"
+	depends on SENSOR_SC2331_MIPI
+	depends on SENSOR_SC2331_ONE_LANE_MIPI
+	depends on SENSOR_SC2331_SM_VSYNC_MODE
+	default n
+
+choice
+	prompt "select Master SC2331 output mode"
+	help
+	  Default Master SC2331 set asynchronous output mode
+
+	config SENSOR_SC2331_SYNCHR_OUTPUT
+		bool "master sc2331 set synchronous"
+		depends on SENSOR_SC2331_MIPI
+		depends on SENSOR_SC2331_ONE_LANE_MIPI
+		depends on SENSOR_SC2331_SM_VSYNC_MODE
+		depends on SENSOR_SC2331_MASTER_SET_OUTPUT
+		help
+			master sc2331 set synchronous output mode
+
+	config SENSOR_SC2331_ASYNCHR_OUTPUT
+		bool "master sc2331 set asynchronous"
+		depends on SENSOR_SC2331_MIPI
+		depends on SENSOR_SC2331_ONE_LANE_MIPI
+		depends on SENSOR_SC2331_SM_VSYNC_MODE
+		depends on SENSOR_SC2331_MASTER_SET_OUTPUT
+		help
+			master sc2331 set asynchronous output mode
+endchoice
+
+config SENSOR_TWO_SC2331_USE_SAME_RESET
+	bool "two sc2331 use same reset"
+	depends on SENSOR_SC2331_MIPI
+	default n
+
+config SENSOR_SC2356_MIPI
+	tristate "use sc2356_mipi driver"
+	default n
+
+config SENSOR_SC2337P_MIPI
+	tristate "use sc2337p_mipi driver"
+	default n
+
+config SENSOR_SC2337P_SYNCHR_OUTPUT
+	bool "use sc2337p_mipi set synchr output"
+	depends on SENSOR_SC2337P_MIPI
+	default n
+
+config SENSOR_SC2337P_STREAMON_IN_KERNEL
+	bool "set sc2337p streamon in kernel"
+	depends on SENSOR_SC2337P_SYNCHR_OUTPUT
+	depends on VIN_INIT_MELIS
+	default n
+
+config SENSOR_SC2337P_STREAMON_TOGETHER
+	bool "set sc2337p streamon together"
+	depends on SENSOR_SC2337P_STREAMON_IN_KERNEL
+	default n
+
+config SENSOR_SC3336_MIPI
+	tristate "use sc3336_mipi driver"
+	default n
+
+config SENSOR_SC4336P_MIPI
+	tristate "use sc4336p_mipi driver"
+	default n
+
+config SENSOR_SC500AI_MIPI
+	tristate "use sc500ai_mipi driver"
+	default n
+
+config SENSOR_SC530AI_MIPI
+	tristate "use sc530ai_mipi driver"
+	default n
+
+config SENSOR_SC1346_MIPI
+	tristate "use sc1346_mipi driver"
+	default n
+
+config SENSOR_SC1346_SYNCHR_OUTPUT
+	bool "sc1346 set synchronous"
+	depends on SENSOR_SC1346_MIPI
+	default n
+
+config SENSOR_SC1346_MULTIPLEX_IIC
+	bool "sc1346 multiplexing IIC"
+	depends on SENSOR_SC1346_MIPI
+	default n
+
+config SENSOR_SP5409
+	tristate "use sp5409 driver"
+	default n
+
+config SENSOR_SP1405
+       tristate "use sp1405 driver"
+       default n
+
+config SENSOR_TC358743XBG
+	tristate "use tc358743xbg driver"
+	default n
+
+config SENSOR_TP2815
+	tristate "use tp2815 driver"
+	default n
+
+config SENSOR_TP9930
+	tristate "use tp9930 driver"
+	default n
+
+config SENSOR_TP9950
+	tristate "use tp9950 driver"
+	default n
+
+config SENSOR_TP9963
+	tristate "use tp9963 driver"
+	default n
+
+config SENSOR_TP9932
+	tristate "use tp9932 driver"
+	default n
+
+config SENSOR_H63P_MIPI
+	tristate "use h63p_mipi driver"
+	default n
+
+config SENSOR_MS7200
+	tristate "use ms7200 driver"
+	default n
+
+config SENSOR_RK628F
+	tristate "use rk628f driver"
+	default n
+
+endmenu

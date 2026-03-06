@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+menu "Chip LeveL APIs"
+depends on AW_BSP
+
+config AW_CHIPS
+	tristate "Chip LeveL APIs for Allwinner SoCs"
+	depends on AW_BSP
+	default n
+	help
+	  Provide chip level APIs for Allwinner SoCs.
+
+choice
+	prompt "Choose the Chip Version"
+	depends on ARCH_SUN300IW1
+	depends on AW_CHIPS
+	default CHIP_V821
+	help
+	  Select the appropriate chip level API for Allwinner V821 SoCs.
+
+config CHIP_V821
+	bool "V821"
+	help
+	  Provide chip level APIs for Allwinner V821 SoCs.
+
+config CHIP_V821B
+	bool "V821B"
+	help
+	  Provide chip level APIs for Allwinner V821B SoCs.
+
+endchoice
+
+endmenu
